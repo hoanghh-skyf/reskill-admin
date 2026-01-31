@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import Header from "@/components/layouts/header";
 import Sidebar from "@/components/layouts/sidebar";
+import AppDynamicBreadcrumb from "@/components/shared/app-dynamic-breadcrumb";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,8 @@ const MainRootLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       >
         <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
-        <main className="flex-1 overflow-auto px-2 xl:pl-8 xl:pr-4">
+        <main className="flex-1 overflow-auto px-2 xl:pl-8 xl:pr-4 flex flex-col gap-4">
+          <AppDynamicBreadcrumb />
           {children}
         </main>
       </div>
