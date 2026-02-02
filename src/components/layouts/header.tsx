@@ -14,7 +14,7 @@ interface HeaderProps {
 
 const Header = ({ onMenuToggle }: HeaderProps) => {
   return (
-    <header className="flex h-16 xl:h-20 w-full items-center justify-between px-4 xl:pl-8 xl:pr-4">
+    <header className="flex h-16 xl:h-20 w-full items-center justify-between px-4 xl:pl-8 xl:pr-4 bg-white rounded-lg border border-gray-200">
       {/* Search Input & Mobile Menu */}
       <div className="flex items-center gap-4">
         <Button

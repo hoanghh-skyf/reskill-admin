@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import Header from "@/components/layouts/header";
 import Sidebar from "@/components/layouts/sidebar";
-import AppDynamicBreadcrumb from "@/components/shared/app-dynamic-breadcrumb";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +13,7 @@ const MainRootLayout = ({ children }: { children: React.ReactNode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-gray-100 p-2 md:p-4">
+    <div className="flex min-h-screen bg-gray-100 p-2 pt-0 md:p-4 md:pt-0">
       <Sidebar
         isCollapsed={isCollapsed}
         onToggle={() => setIsCollapsed(!isCollapsed)}
@@ -27,9 +26,15 @@ const MainRootLayout = ({ children }: { children: React.ReactNode }) => {
           isCollapsed ? "xl:ml-20" : "xl:ml-64",
         )}
       >
-        <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
+        <div className="sticky top-0 z-50 ml-8 mr-4 mb-4 pb-2 bg-gray-100">
+          <div className="pt-4">
+            <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
+          </div>
+
+          {/* Gradient Fade Overlay */}
+          <div className="absolute -bottom-4 left-0 right-0 h-4 bg-linear-to-b from-gray-100 to-transparent pointer-events-none" />
+        </div>
         <main className="flex-1 overflow-auto px-2 xl:pl-8 xl:pr-4 flex flex-col gap-4">
-          <AppDynamicBreadcrumb />
           {children}
         </main>
       </div>
