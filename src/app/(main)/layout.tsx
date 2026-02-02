@@ -26,7 +26,7 @@ const MainRootLayout = ({ children }: { children: React.ReactNode }) => {
           isCollapsed ? "xl:ml-20" : "xl:ml-64",
         )}
       >
-        <div className="sticky top-0 z-50 ml-8 mr-4 mb-4 pb-2 bg-gray-100">
+        <div className="sticky top-0 z-20 mx-2 xl:ml-8 xl:mr-4 mb-4 pb-2 bg-gray-100">
           <div className="pt-4">
             <Header onMenuToggle={() => setIsMobileMenuOpen(true)} />
           </div>
