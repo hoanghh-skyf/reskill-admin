@@ -3,10 +3,9 @@
 import type React from "react";
 import { useState } from "react";
 
-import Header from "@/components/layouts/header";
-import Sidebar from "@/components/layouts/sidebar";
-
-import { cn } from "@/lib/utils";
+import Header from "@/shared/components/layouts/header";
+import Sidebar from "@/shared/components/layouts/sidebar";
+import { cn } from "@/shared/lib/utils";
 
 const MainRootLayout = ({ children }: { children: React.ReactNode }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);

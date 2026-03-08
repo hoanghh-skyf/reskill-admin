@@ -1,8 +1,8 @@
 import { Barlow } from "next/font/google";
-import { sinter } from "@/styles/fonts";
-import "../styles/globals.css";
+import "@/shared/styles/globals.css";
 
 import type { Metadata } from "next";
+import { sinter } from "@/shared/styles/fonts";
 
 export const metadata: Metadata = {
   title: "Re-Skill",

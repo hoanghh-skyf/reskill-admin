@@ -1,9 +1,8 @@
 "use client";
 
+import ResetPasswordForm from "@/modules/authentication/ui/reset-password-form";
+import AuthLayout from "@/shared/components/layouts/auth-layout";
 import { ShieldCheck } from "lucide-react";
-
-import ResetPasswordForm from "@/components/features/auth/reset-password-form";
-import AuthLayout from "@/components/layouts/auth-layout";
 
 export default function ResetPasswordPage() {
   return (

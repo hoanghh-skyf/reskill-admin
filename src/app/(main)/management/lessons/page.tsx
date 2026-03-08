@@ -1,4 +1,4 @@
-import LessonManagement from "@/components/features/lesson-management";
+import LessonManagement from "@/modules/lesson/ui/lesson-management";
 
 export default function LessonsPage() {
   return (

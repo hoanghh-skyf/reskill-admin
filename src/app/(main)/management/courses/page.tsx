@@ -1,4 +1,4 @@
-import CourseManagement from "@/components/features/course-management";
+import CourseManagement from "@/modules/course/ui/course-management";
 
 export default function CoursesPage() {
   return (

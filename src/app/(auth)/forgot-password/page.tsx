@@ -1,9 +1,9 @@
 "use client";
 
 import { ShieldQuestion } from "lucide-react";
+import ForgotPasswordForm from "@/modules/authentication/ui/forgot-password-form";
 
-import ForgotPasswordForm from "@/components/features/auth/forgot-password-form";
-import AuthLayout from "@/components/layouts/auth-layout";
+import AuthLayout from "@/shared/components/layouts/auth-layout";
 
 export default function ForgotPasswordPage() {
   return (

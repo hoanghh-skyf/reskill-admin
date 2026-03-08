@@ -1,8 +1,8 @@
 "use client";
 
-import OTPValidationForm from "@/components/features/auth/otp-validation-form";
-import { MobileActionOTPCodeIcon } from "@/components/icons";
-import AuthLayout from "@/components/layouts/auth-layout";
+import OTPValidationForm from "@/modules/authentication/ui/otp-validation-form";
+import { MobileActionOTPCodeIcon } from "@/shared/components/icons";
+import AuthLayout from "@/shared/components/layouts/auth-layout";
 
 const VerificationOTPPage = () => {
   return (
