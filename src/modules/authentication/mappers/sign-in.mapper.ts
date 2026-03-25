@@ -1,5 +1,5 @@
-import type { TSignInBodyDto } from "../dtos/sign-in.dto";
-import type { TSignInSchema } from "../schema";
+import type { TSignInBodyDto } from "../dtos";
+import type { TSignInSchema } from "../schemas";
 
 export const toSignInBodyDto = ({
   signInSchema,
@@ -7,7 +7,7 @@ export const toSignInBodyDto = ({
   signInSchema: TSignInSchema;
 }): TSignInBodyDto => {
   return {
-    account: signInSchema.account,
+    email: signInSchema.email,
     password: signInSchema.password,
   };
 };

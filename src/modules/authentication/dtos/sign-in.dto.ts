@@ -1,4 +1,8 @@
 export type TSignInBodyDto = {
-  account: string;
+  email: string;
   password: string;
+};
+
+export type TSignInResponseDto = {
+  verify_token: string;
 };

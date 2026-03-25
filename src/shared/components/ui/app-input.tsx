@@ -23,7 +23,10 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
       <Input
         {...props}
         ref={ref}
-        className={cn(props.className, "focus-visible:ring-0 rounded-sm")}
+        className={cn(
+          props.className,
+          "focus-visible:ring-0 rounded-sm disabled:cursor-not-allowed disabled:pointer-events-none disabled:",
+        )}
         aria-invalid={!!error || props["aria-invalid"]}
       />
     );
@@ -37,7 +40,9 @@ const AppInput = forwardRef<HTMLInputElement, AppInputProps>(
         className={cn(fieldProps?.className)}
       >
         {label && <AppFieldLabel htmlFor={props.id}>{label}</AppFieldLabel>}
-        <AppFieldContent className="gap-1">
+        <AppFieldContent
+          className={cn("gap-1", props.disabled && "cursor-not-allowed")}
+        >
           {input}
           {description && (
             <AppFieldDescription>{description}</AppFieldDescription>
