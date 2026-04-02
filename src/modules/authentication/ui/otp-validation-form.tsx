@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { RefreshCwIcon, UnlockKeyhole } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import {
   otpValidationSchema,
@@ -18,14 +17,13 @@ import {
   AppInputOTPSlot,
 } from "@/shared/components/ui/app-input-otp";
 import { appToast } from "@/shared/components/ui/app-sonner";
-import { APP_ROUTERS } from "@/shared/constants";
 import { actionWithError } from "@/shared/lib/errors";
 import { range } from "@/shared/lib/utils";
+import { authSignInAction } from "../actions.server";
 import { useResendLoginOTP, useVerifyLoginOTP } from "../hooks";
 import useVerifyOtpStore from "../stores/verify-otp.store";
 
 const OTPValidationForm = ({ token }: { token: string }) => {
-  const router = useRouter();
   const resendAfter = useVerifyOtpStore((state) => state.resendAfter);
   const setSecondsToResend = useVerifyOtpStore(
     (state) => state.setSecondsToResend,
@@ -58,10 +56,11 @@ const OTPValidationForm = ({ token }: { token: string }) => {
           onError(error) {
             if (error.error?.code && Number(error.error.code)) {
               setSecondsToResend(Number(error.error.code));
+            } else {
+              setError("code", {
+                message: error.message,
+              });
             }
-            setError("code", {
-              message: error.message,
-            });
           },
         });
       },
@@ -69,7 +68,12 @@ const OTPValidationForm = ({ token }: { token: string }) => {
 
   const { mutate: verifyLoginOTP, isPending: isVerifyLoginOTPPending } =
     useVerifyLoginOTP({
-      onSuccess: () => router.push(APP_ROUTERS.STATISTICS.PATH),
+      onSuccess: async (data) => {
+        await authSignInAction({
+          token: data.accessToken,
+        });
+        appToast.success("Verify OTP successfully");
+      },
       onError: (error) => {
         actionWithError({
           error,
@@ -78,13 +82,15 @@ const OTPValidationForm = ({ token }: { token: string }) => {
       },
     });
 
+  const handleVerifyLoginOTP = (data: TOTPValidationSchema) => {
+    verifyLoginOTP({
+      otp: data.code,
+      token,
+    });
+  };
+
   return (
-    <form
-      className="w-full"
-      onSubmit={handleSubmit(async (data) =>
-        verifyLoginOTP({ token, otp: data.code }),
-      )}
-    >
+    <form className="w-full" onSubmit={handleSubmit(handleVerifyLoginOTP)}>
       <div className="flex items-center justify-between w-full mb-4">
         <AppFieldLabel htmlFor="otp-verification">
           Verification code

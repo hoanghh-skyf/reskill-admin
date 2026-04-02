@@ -4,8 +4,8 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { EResponseStatus } from "@/shared/constants";
-import type { TError } from "@/shared/types";
-import { resetPasswordAction } from "../actions";
+import type { TError } from "@/shared/lib/errors";
+import { resetPasswordAction } from "../actions.server";
 import type { TResetPasswordSchema } from "../schemas";
 
 type TUseResetPasswordParams = {

@@ -4,13 +4,18 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { EResponseStatus } from "@/shared/constants";
-import type { TError } from "@/shared/types";
-import { verifyLoginOTPAction } from "../actions";
+import type { TError } from "@/shared/lib/errors";
+import { verifyLoginOTPAction } from "../actions.server";
+import type { TVerifyLoginOTPDataSource } from "../data_source/response.data_source";
 import type { TVerifyLoginOTPSchema } from "../schemas";
 
 type TUseVerifyLoginOTPParams = {
   key?: MutationKey;
-} & UseMutationOptions<unknown, TError, TVerifyLoginOTPSchema>;
+} & UseMutationOptions<
+  TVerifyLoginOTPDataSource,
+  TError,
+  TVerifyLoginOTPSchema
+>;
 
 export const useVerifyLoginOTP = ({
   key,
@@ -25,7 +30,7 @@ export const useVerifyLoginOTP = ({
       if (res.status !== EResponseStatus.SUCCESS) {
         throw res.data;
       }
-      return res.data;
+      return res.data as TVerifyLoginOTPDataSource;
     },
     onError: onError ?? (() => {}),
     onSuccess: onSuccess ?? (() => {}),

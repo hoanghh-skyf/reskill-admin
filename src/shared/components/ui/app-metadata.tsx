@@ -23,7 +23,11 @@ function formatTitle(name: string, template?: string): string {
   return t.replaceAll("{name}", name);
 }
 
-export function AppMetadata({ name, description, titleTemplate }: AppMetadataProps) {
+export function AppMetadata({
+  name,
+  description,
+  titleTemplate,
+}: AppMetadataProps) {
   useEffect(() => {
     // Client-only safety (avoid edge cases in tests / unusual runtimes)
     if (typeof document === "undefined") return;
@@ -46,7 +50,9 @@ export function AppMetadata({ name, description, titleTemplate }: AppMetadataPro
       }
 
       if (resolvedDescription) {
-        let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+        let meta = document.querySelector<HTMLMetaElement>(
+          'meta[name="description"]',
+        );
         if (!meta) {
           meta = document.createElement("meta");
           meta.setAttribute("name", "description");
@@ -69,7 +75,9 @@ export function AppMetadata({ name, description, titleTemplate }: AppMetadataPro
           document.title = previousTitle;
         }
         if (resolvedDescription) {
-          const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+          const meta = document.querySelector<HTMLMetaElement>(
+            'meta[name="description"]',
+          );
           if (!meta) return;
 
           if (previousDescriptionContent === null) {
@@ -86,4 +94,3 @@ export function AppMetadata({ name, description, titleTemplate }: AppMetadataPro
 
   return null;
 }
-

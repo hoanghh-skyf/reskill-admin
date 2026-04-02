@@ -1,6 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { redirect } from "next/navigation";
-import { verifyTokenAction } from "@/modules/authentication/actions";
+import { verifyTokenAction } from "@/modules/authentication/actions.server";
 import ResetPasswordForm from "@/modules/authentication/ui/reset-password-form";
 import AuthLayout from "@/shared/components/layouts/auth-layout";
 import { APP_ROUTERS, EResponseStatus, ETokenType } from "@/shared/constants";

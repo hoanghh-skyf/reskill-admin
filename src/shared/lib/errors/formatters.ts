@@ -1,7 +1,6 @@
 import type { AxiosError } from "axios";
 import { type EResponseStatus, ERROR_MESSAGES } from "@/shared/constants";
-import type { TClientResponse } from "@/shared/types";
-import type { TApiResponse } from "@/shared/types/response";
+import type { TApiResponse, TClientResponse } from "@/shared/types";
 
 export const errorFormatter = (error: unknown) => {
   const requestError = error as AxiosError<TApiResponse>;

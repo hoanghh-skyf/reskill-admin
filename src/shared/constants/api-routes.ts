@@ -7,5 +7,6 @@ export const API_ROUTES = {
     VERIFY_LOGIN_OTP: "/auth/confirm-otp",
     FORGOT_PASSWORD: "/auth/password/forgot",
     RESET_PASSWORD: "/auth/password/reset",
+    ME: "/auth/me",
   },
 } as const;

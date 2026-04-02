@@ -1,14 +1,16 @@
 import { API_ROUTES, ETokenType } from "@/shared/constants";
 import apiClient from "@/shared/lib/api-client";
-import type { TApiResponse } from "@/shared/types/response";
+import type { TApiResponse } from "@/shared/types";
 import type {
   TForgotPasswordBodyDto,
+  TGetMeResponseDto,
   TResendLoginTokenBodyDto,
   TResetPasswordBodyDto,
   TSignInBodyDto,
   TSignInResponseDto,
   TVerifyLoginOTPBodyDto,
-  TVerifyTokenDto,
+  TVerifyLoginOTPResponseDto,
+  TVerifyTokenBodyDto,
 } from "./dtos";
 
 export const signIn = async ({ body }: { body: TSignInBodyDto }) => {
@@ -18,7 +20,7 @@ export const signIn = async ({ body }: { body: TSignInBodyDto }) => {
   );
 };
 
-export const verifyToken = async ({ body }: { body: TVerifyTokenDto }) => {
+export const verifyToken = async ({ body }: { body: TVerifyTokenBodyDto }) => {
   const verifyTokenURL =
     body.type === ETokenType.LOGIN
       ? API_ROUTES.AUTH.VERIFY_LOGIN_TOKEN
@@ -46,7 +48,7 @@ export const verifyLoginOTP = async ({
 }: {
   body: TVerifyLoginOTPBodyDto;
 }) => {
-  return await apiClient.post<TApiResponse<void>>(
+  return await apiClient.post<TApiResponse<TVerifyLoginOTPResponseDto>>(
     `${API_ROUTES.AUTH.VERIFY_LOGIN_OTP}`,
     body,
   );
@@ -73,5 +75,11 @@ export const resetPassword = async ({
   return await apiClient.post<TApiResponse<void>>(
     `${API_ROUTES.AUTH.RESET_PASSWORD}?token=${token}`,
     body,
+  );
+};
+
+export const getMe = async () => {
+  return await apiClient.get<TApiResponse<TGetMeResponseDto>>(
+    API_ROUTES.AUTH.ME,
   );
 };

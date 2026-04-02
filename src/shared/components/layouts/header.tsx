@@ -1,11 +1,10 @@
 "use client";
 
 import { Menu } from "lucide-react";
-
+import AppButton from "../ui/app-button";
 import HeaderActions from "./header-actions";
 import SearchInput from "./search-input";
 import UserProfile from "./user-profile";
-import AppButton from "../ui/app-button";
 
 interface HeaderProps {
   onMenuToggle?: () => void;

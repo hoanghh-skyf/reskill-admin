@@ -15,16 +15,6 @@ import { LessonActions } from "../components/lesson-actions";
 import { MOCK_LESSONS } from "../mocks";
 import { LessonFilters } from "./lesson-filters";
 
-// --- Mock Data ---
-const MOCK_COURSES = [
-  { id: "c1", title: "React JS Fundamentals", slug: "react-js-fundamentals" },
-  {
-    id: "c2",
-    title: "Advanced React Patterns",
-    slug: "advanced-react-patterns",
-  },
-];
-
 const LessonTypeIcon = ({ type }: { type: ELessonType }) => {
   switch (type) {
     case ELessonType.VIDEO:

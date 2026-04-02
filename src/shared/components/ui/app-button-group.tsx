@@ -1,8 +1,6 @@
 import type { ComponentProps } from "react";
-
-import { cn } from "@/shared/lib/utils/index";
-
 import * as UI from "@/shared/components/base/button-group";
+import { cn } from "@/shared/lib/utils/index";
 
 export const AppButtonGroup = (
   props: ComponentProps<typeof UI.ButtonGroup>,

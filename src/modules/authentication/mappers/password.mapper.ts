@@ -1,7 +1,7 @@
 import type { TForgotPasswordBodyDto, TResetPasswordBodyDto } from "../dtos";
 import type { TForgotPasswordSchema, TResetPasswordSchema } from "../schemas";
 
-export const toForgotPasswordBodyDto = ({
+export const toForgotPasswordDto = ({
   forgotPasswordSchema,
 }: {
   forgotPasswordSchema: TForgotPasswordSchema;
@@ -11,7 +11,7 @@ export const toForgotPasswordBodyDto = ({
   };
 };
 
-export const toResetPasswordBodyDto = ({
+export const toResetPasswordDto = ({
   resetPasswordSchema,
 }: {
   resetPasswordSchema: TResetPasswordSchema;

@@ -5,8 +5,8 @@ import {
 } from "@tanstack/react-query";
 import { appToast } from "@/shared/components/ui/app-sonner";
 import { EResponseStatus } from "@/shared/constants";
-import type { TError } from "@/shared/types";
-import { forgotPasswordAction } from "../actions";
+import type { TError } from "@/shared/lib/errors";
+import { forgotPasswordAction } from "../actions.server";
 import type { TForgotPasswordSchema } from "../schemas";
 
 type TUseForgotPasswordParams = {

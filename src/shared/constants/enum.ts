@@ -12,3 +12,9 @@ export enum EErrorType {
   VALIDATION = "VALIDATION",
   BUSINESS = "BUSINESS",
 }
+
+export enum EUserRole {
+  ADMIN = "ADMIN",
+  USER = "USER",
+  WATCHER = "WATCHER",
+}

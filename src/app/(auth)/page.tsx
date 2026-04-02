@@ -3,7 +3,7 @@ import { WavingHandIcon } from "@/shared/components/icons";
 import AuthLayout from "@/shared/components/layouts/auth-layout";
 import { APP_ROUTERS } from "@/shared/constants";
 
-export default function LoginPage() {
+export default async function LoginPage() {
   return (
     <AuthLayout
       name={APP_ROUTERS.AUTH.LOGIN.NAME}

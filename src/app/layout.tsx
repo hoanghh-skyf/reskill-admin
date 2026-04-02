@@ -3,6 +3,7 @@ import "@/shared/styles/globals.css";
 
 import type { Metadata } from "next";
 import QueryProvider from "@/shared/providers/query.provider";
+import SessionProvider from "@/shared/providers/session.provider";
 import SonnerProvider from "@/shared/providers/sonner.provider";
 import { sinter } from "@/shared/styles/fonts";
 
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${sinter.variable} ${barlow.variable} font-barlow antialiased`}
       >
         <QueryProvider>
-          <SonnerProvider>{children}</SonnerProvider>
+          <SessionProvider>
+            <SonnerProvider>{children}</SonnerProvider>
+          </SessionProvider>
         </QueryProvider>
       </body>
     </html>

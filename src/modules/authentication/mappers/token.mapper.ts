@@ -1,11 +1,11 @@
-import type { TVerifyTokenDto } from "../dtos";
+import type { TVerifyTokenBodyDto } from "../dtos";
 import type { TVerifyTokenSchema } from "../schemas";
 
 export const toVerifyTokenBodyDto = ({
   verifyTokenSchema,
 }: {
   verifyTokenSchema: TVerifyTokenSchema;
-}): TVerifyTokenDto => {
+}): TVerifyTokenBodyDto => {
   return {
     token: verifyTokenSchema.token,
     type: verifyTokenSchema.type,

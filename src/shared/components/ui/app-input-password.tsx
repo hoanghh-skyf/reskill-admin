@@ -22,9 +22,8 @@ import {
   AppInputGroupInput,
 } from "./app-input-group";
 
-interface AppInputPasswordProps extends ComponentProps<
-  typeof AppInputGroupInput
-> {
+interface AppInputPasswordProps
+  extends ComponentProps<typeof AppInputGroupInput> {
   label?: ReactNode;
   description?: ReactNode;
   error?: string | { message?: string };

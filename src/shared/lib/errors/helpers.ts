@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "axios";
 import type { FieldValues, Path, UseFormSetError } from "react-hook-form";
 import { EErrorType, EResponseStatus } from "@/shared/constants";
-import type { TError, TErrorFields } from "@/shared/types";
+import type { TError, TErrorFields } from "./types";
 
 const fallbackShape = (message: string): TError => ({
   status: EResponseStatus.ERROR,

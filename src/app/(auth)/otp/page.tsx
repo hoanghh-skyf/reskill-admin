@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { verifyTokenAction } from "@/modules/authentication/actions";
+import { verifyTokenAction } from "@/modules/authentication/actions.server";
 import OTPValidationForm from "@/modules/authentication/ui/otp-validation-form";
 import { MobileActionOTPCodeIcon } from "@/shared/components/icons";
 import AuthLayout from "@/shared/components/layouts/auth-layout";

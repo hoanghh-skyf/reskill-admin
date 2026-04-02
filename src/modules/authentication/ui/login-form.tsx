@@ -13,7 +13,7 @@ import AppCheckboxField from "@/shared/components/ui/app-checkbox-field";
 import AppInput from "@/shared/components/ui/app-input";
 import AppInputPassword from "@/shared/components/ui/app-input-password";
 import { appToast } from "@/shared/components/ui/app-sonner";
-import { APP_ROUTERS } from "@/shared/constants";
+import { APP_ROUTERS, EErrorType } from "@/shared/constants";
 import { actionWithError } from "@/shared/lib/errors";
 import { simpleEncode } from "@/shared/lib/utils";
 import { useSignIn } from "../hooks";
@@ -29,10 +29,10 @@ const LoginForm = () => {
     resolver: zodResolver(signInSchema),
   });
 
-  const { mutate: signIn, isPending } = useSignIn({
+  const { mutate: signInMutation, isPending } = useSignIn({
     onSuccess(data, variables) {
       const encodedToken = simpleEncode({
-        token: data.verify_token,
+        token: data.verifyToken,
         email: variables.email,
       });
       appToast.success("Email sent successfully", {
@@ -47,16 +47,25 @@ const LoginForm = () => {
       actionWithError({
         error,
         onError(error) {
-          setError("root", {
-            message: error.message,
-          });
+          if (error.error?.type === EErrorType.VALIDATION) {
+            setError("root", {
+              message: error.message,
+            });
+          } else {
+            appToast.error("Login failed", {
+              description: error.message,
+            });
+          }
         },
       });
     },
   });
 
   return (
-    <form className="w-full" onSubmit={handleSubmit((data) => signIn(data))}>
+    <form
+      className="w-full"
+      onSubmit={handleSubmit((data) => signInMutation(data))}
+    >
       <AppInput
         placeholder="Email"
         className="min-h-10"

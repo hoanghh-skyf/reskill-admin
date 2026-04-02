@@ -4,8 +4,8 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { EResponseStatus } from "@/shared/constants";
-import type { TError } from "@/shared/types";
-import { resendLoginOTPAction } from "../actions";
+import type { TError } from "@/shared/lib/errors";
+import { resendLoginOTPAction } from "../actions.server";
 import type { TResendLoginOTPSchema } from "../schemas";
 
 type TUseResendLoginOTPParams = {

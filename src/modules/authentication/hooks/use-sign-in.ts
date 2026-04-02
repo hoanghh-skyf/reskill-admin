@@ -6,14 +6,14 @@ import {
   useMutation,
 } from "@tanstack/react-query";
 import { EResponseStatus } from "@/shared/constants";
-import type { TError } from "@/shared/types";
-import { signInAction } from "../actions";
-import type { TSignInResponseDto } from "../dtos";
+import type { TError } from "@/shared/lib/errors";
+import { signInAction } from "../actions.server";
+import type { TSignInDataSource } from "../data_source/response.data_source";
 import type { TSignInSchema } from "../schemas";
 
 type TUseSignInParams = {
   key?: MutationKey;
-} & UseMutationOptions<TSignInResponseDto, TError, TSignInSchema>;
+} & UseMutationOptions<TSignInDataSource, TError, TSignInSchema>;
 
 export const useSignIn = ({
   key,
@@ -28,7 +28,7 @@ export const useSignIn = ({
       if (res.status !== EResponseStatus.SUCCESS) {
         throw res.data;
       }
-      return res.data as TSignInResponseDto;
+      return res.data as TSignInDataSource;
     },
     onError: onError ?? (() => {}),
     onSuccess: onSuccess ?? (() => {}),

@@ -14,7 +14,7 @@ type LessonActionsProps = {
   lesson: TLesson;
 };
 
-export function LessonActions({ lesson }: LessonActionsProps) {
+export function LessonActions({ lesson: _ }: LessonActionsProps) {
   return (
     <AppTooltipProvider>
       <div className="flex items-center justify-end gap-2">
