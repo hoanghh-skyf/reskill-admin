@@ -2,6 +2,7 @@
 
 import { Bell, MessageSquare } from "lucide-react";
 import AppButton from "../ui/app-button";
+import { AppPingIndicator } from "../ui/app-ping-indicator";
 
 const HeaderActions = () => {
   return (
@@ -16,13 +17,10 @@ const HeaderActions = () => {
       <AppButton
         variant="outline"
         size="icon-lg"
-        className="relative rounded-full border-gray-100 text-gray-500 hover:bg-gray-50 bg-white"
+        className="rounded-full border-gray-100 text-gray-500 hover:bg-gray-50 bg-white relative"
       >
         <Bell className="size-[18px]" />
-        <span className="absolute top-2.5 right-2.5 flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-        </span>
+        <AppPingIndicator variant="destructive" />
       </AppButton>
     </div>
   );

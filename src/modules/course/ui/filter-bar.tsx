@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, Search } from "lucide-react";
+import { Filter, Plus, Search } from "lucide-react";
 import AppButton from "@/shared/components/ui/app-button";
 import AppInput from "@/shared/components/ui/app-input";
 import {
@@ -24,7 +24,7 @@ export function FilterBar() {
         <div className="relative flex-1 sm:max-w-md">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <AppInput
-            placeholder="Tìm kiếm theo tên khóa học..."
+            placeholder="Search by course name..."
             className="pl-9 rounded-full border-gray-300 focus-visible:ring-orange-500 focus-visible:border-orange-500"
           />
         </div>
@@ -55,15 +55,19 @@ export function FilterBar() {
       <div className="flex items-center gap-3">
         <AppSelect defaultValue="newest">
           <AppSelectTrigger className="w-[160px] border-gray-300 focus:ring-orange-500">
-            <AppSelectValue placeholder="Sắp xếp" />
+            <AppSelectValue placeholder="Sort by" />
           </AppSelectTrigger>
           <AppSelectContent>
-            <AppSelectItem value="newest">Mới nhất</AppSelectItem>
-            <AppSelectItem value="oldest">Cũ nhất</AppSelectItem>
-            <AppSelectItem value="price-desc">Giá cao đến thấp</AppSelectItem>
-            <AppSelectItem value="price-asc">Giá thấp đến cao</AppSelectItem>
+            <AppSelectItem value="newest">Newest</AppSelectItem>
+            <AppSelectItem value="oldest">Oldest</AppSelectItem>
+            <AppSelectItem value="price-desc">Price: High to Low</AppSelectItem>
+            <AppSelectItem value="price-asc">Price: Low to High</AppSelectItem>
           </AppSelectContent>
         </AppSelect>
+        <AppButton type="button" variant="default">
+          <Plus className="h-4 w-4" />
+          <span>Create Course</span>
+        </AppButton>
       </div>
     </div>
   );

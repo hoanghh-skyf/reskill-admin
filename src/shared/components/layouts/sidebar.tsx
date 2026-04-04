@@ -110,7 +110,7 @@ const Sidebar = ({ isCollapsed, onToggle, isOpen, onClose }: SidebarProps) => {
 
       <aside
         className={cn(
-          "fixed left-4 top-4 h-[calc(100vh-2rem)] bg-white p-4 pt-8 border transition-all duration-500 ease-in-out flex flex-col gap-4 z-50 rounded-2xl xl:translate-x-0",
+          "fixed left-4 top-4 bottom-[65px] bg-white p-4 pt-8 border transition-all duration-500 ease-in-out flex flex-col gap-4 z-50 rounded-2xl xl:translate-x-0",
           isCollapsed ? "w-20" : "w-64",
           isOpen ? "translate-x-0" : "-translate-x-[110%] xl:translate-x-0",
         )}
