@@ -1,11 +1,9 @@
 import type { DefaultJWT } from "@auth/core/jwt";
 import type { DefaultSession } from "next-auth";
-import type { EUserRole } from "@/shared/constants";
 
 type AuthUser = {
   id: string;
   email: string;
-  role: EUserRole;
   is_active: boolean;
 };
 
