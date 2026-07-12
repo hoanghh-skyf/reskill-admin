@@ -1,22 +1,29 @@
-import { Barlow } from "next/font/google";
-import "@/shared/styles/globals.css";
+import { Bitter, Inter_Tight } from "next/font/google";
+import "@/globals.css";
 
 import type { Metadata } from "next";
-import QueryProvider from "@/shared/providers/query.provider";
-import SessionProvider from "@/shared/providers/session.provider";
-import SonnerProvider from "@/shared/providers/sonner.provider";
-import { sinter } from "@/shared/styles/fonts";
+import { APP_DESCRIPTION, APP_NAME } from "@/constants";
+import QueryProvider from "@/providers/query.provider";
 
 export const metadata: Metadata = {
-  title: "Re-Skill",
-  description: "Re-Skill",
+  title: APP_NAME,
+  description: APP_DESCRIPTION,
 };
 
-const barlow = Barlow({
-  subsets: ["latin"],
+const bitter = Bitter({
+  subsets: ["latin", "vietnamese"],
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-barlow",
+  variable: "--font-bitter",
+  preload: true,
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin", "vietnamese"],
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-sans",
+  preload: true,
 });
 
 export default function RootLayout({
@@ -25,15 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
-      <body
-        className={`${sinter.variable} ${barlow.variable} font-barlow antialiased`}
-      >
-        <QueryProvider>
-          <SessionProvider>
-            <SonnerProvider>{children}</SonnerProvider>
-          </SessionProvider>
-        </QueryProvider>
+    <html
+      lang="en"
+      className={`light ${bitter.variable} ${interTight.variable}`}
+    >
+      <body className="antialiased">
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
